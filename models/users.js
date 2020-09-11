@@ -1,38 +1,24 @@
-//db connections and models -Table definition
-const Sequelize=require("sequelize");
-//to use postgres db in my heroku
-let db;
+const mongoose=require("mongoose");
 
-if(process.env.DATABASE_URL){
-    db=new Sequelize(process.env.DATABASE_URL);
-}else{
-    db=new Sequelize({
-        dialect:"sqlite",
-        storage:__dirname+"/database"
-    });
-}
-
-const users=db.define("user",{
+const UserSchema=new mongoose.Schema({
     name:{
-        type:Sequelize.DataTypes.STRING(30),
-        allowNull: false
+        type: String,
+        required: true
     },
     email:{
-        type:Sequelize.DataTypes.STRING(30),
-        allowNull: false
+        type: String,
+        required: true
     },
     password:{
-        type:Sequelize.DataTypes.STRING(30),
-        allowNull: false
+        type: String,
+        required: true
     },
     date:{
-        type:Sequelize.DataTypes.DATE,
+        type: Date,
         default: Date.now()
     }
 });
 
+const users=mongoose.model("user",UserSchema);
 
-
-
-
-module.exports= {users,db}
+module.exports= users;

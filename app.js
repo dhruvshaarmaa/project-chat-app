@@ -1,10 +1,9 @@
 const express=require("express");
 const expressLayouts=require("express-ejs-layouts");
-//const mongoose=require("mongoose");
+const mongoose=require("mongoose");
 const flash=require("connect-flash");
 const session=require("express-session");
 const passport = require("passport");
-const {db}=require("./models/users");
 
 const app=express();
 
@@ -12,12 +11,12 @@ const app=express();
 require("./config/passport")(passport);
 
 //DB congif 
-//const db=require("./config/keys").MongoURI;
+const db=require("./config/keys").MongoURI;
 
 //connect to mongo
-//mongoose.connect(db,{useNewUrlParser: true,useUnifiedTopology:true})
-    //.then(()=> console.log("Mongo DB connected"))
-   // .catch(err=> console.error(err))
+mongoose.connect(db,{useNewUrlParser: true,useUnifiedTopology:true})
+    .then(()=> console.log("Mongo DB connected"))
+    .catch(err=> console.error(err))
 
 //EJS
 app.use(expressLayouts);
@@ -54,7 +53,12 @@ app.use((req,res,next)=>{
 app.use("/",require("./routes/index"));
 app.use("/users",require("./routes/users"));
 
-const port=process.env.PORT || 4040;
+let port;
+if(process.env.PORT){
+    port=process.env.PORT
+}else{
+    port=4040;
+}
 
 app.listen(port,()=>{
     console.log(`Server started on http://localhost:${port}`);
