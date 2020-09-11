@@ -8,7 +8,7 @@ const passport = require("passport");
 const app=express();
 
 //Passport config
-require("/config/passport")(passport);
+require("./config/passport")(passport);
 
 //DB congif 
 const db=require("/config/keys").MongoURI;
@@ -50,8 +50,8 @@ app.use((req,res,next)=>{
 });
 
 //Routes
-app.use("/",require("/routes/index"));
-app.use("/users",require("/routes/users"));
+app.use("/",require("./routes/index"));
+app.use("/users",require("./routes/users"));
 
 let port;
 if(process.env.PORT){
