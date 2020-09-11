@@ -56,12 +56,6 @@ app.use("/users",require("./routes/users"));
 
 const port=process.env.PORT || 4040;
 
-db.sync()
-    .then(()=>{
-        app.listen(port,()=>{
-            console.log(`Server started on http://localhost:${port}`);
-        });
-    })
-    .catch((err)=>{
-        console.error(err);
-    })
+app.listen(port,()=>{
+    console.log(`Server started on http://localhost:${port}`);
+});
