@@ -4,13 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-=======
     "start":"node app.js",
     "dev" : "nodemon app.js"
->>>>>>> 586d2f147d0aeb0589920b5d754c7c0b20973b48
   },
   "author": "",
   "license": "ISC",
