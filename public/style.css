@@ -79,7 +79,6 @@ body {
     color: #555;
 }
 
-
 /* Change navbar styling on small viewports */
 @media (max-width: 991.98px) {
     .navbar {
@@ -90,7 +89,16 @@ body {
         color: #555;
     }
 }
+/*Change chatbox styling on small viewports */
+@media (max-width: 700px) {
+	.chat-main {
+		display: block;
+	}
 
+	.chat-sidebar {
+		display: none;
+	}
+}
 
 
 /*

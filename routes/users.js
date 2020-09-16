@@ -4,7 +4,7 @@ const bcrypt=require("bcryptjs");
 const passport=require("passport");
 const {userLoggedIn}=require("../config/auth");
 //User Model
-const users=require("../models/users");
+const {users}=require("../models/users");
 
 //login
 route.get("/login",userLoggedIn,(req,res)=>{

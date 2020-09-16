@@ -1,4 +1,5 @@
 const express=require("express");
+
 const expressLayouts=require("express-ejs-layouts");
 const mongoose=require("mongoose");
 const flash=require("connect-flash");
@@ -6,7 +7,6 @@ const session=require("express-session");
 const passport = require("passport");
 
 const app=express();
-
 //Passport config
 require("./config/passport")(passport);
 
@@ -55,11 +55,12 @@ app.use("/",require("./routes/index"));
 app.use("/users",require("./routes/users"));
 
 
+
 let port;
 if(process.env.PORT){
     port=process.env.PORT
 }else{
-    port=4040;
+    port=4041;
 }
 
 app.listen(port,()=>{
